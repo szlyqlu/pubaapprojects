@@ -1,0 +1,12 @@
+- hosts: all
+  vars:
+    Ansible:
+      Work: "{{ playbook_dir }}"
+      VarsPath: "{{ playbook_dir }}/group_vars"
+  tasks:
+    - name: debug my playbook_dir var
+      debug:
+        msg: "{{ Ansible.VarsPath }}"
+    - name: debug my group_vars
+      debug:
+        msg: "{{ var1 }}"

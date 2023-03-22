@@ -1,0 +1,19 @@
+- hosts: all
+  vars:
+    Ansible:
+      Work: "{{ playbook_dir }}"
+      VarsPath: "{{ playbook_dir }}/group_vars"
+  tasks:
+    - name: copy the all.json to server
+      copy:
+        src: "{{ playbook_dir }}/group_vars/all.json"
+        dest: "/tmp/all.json"
+
+    - name: display the json file
+      shell:
+        cmd: "cat /tmp/all.json"
+      register: result
+
+    - name: debug result
+      debug:
+        msg: "{{ result }}"
